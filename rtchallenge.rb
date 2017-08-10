@@ -1,4 +1,6 @@
 # bundle exec irb -I. -r rtchallenge.rb
+require 'dotenv'
+Dotenv.load
 require 'sinatra'
 require 'json'
 require 'rest-client'
@@ -29,7 +31,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['USER'], ENV['USER_PW']]
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['RT_USER'], ENV['RT_USER_PW']]
   end
 
   def generate_home

@@ -1,4 +1,4 @@
-class CreateOwner < ActiveRecord::Migration
+class CreateOwner < ActiveRecord::Migration[5.0]
   def up
     create_table :owners do |t|
       t.integer :poid
