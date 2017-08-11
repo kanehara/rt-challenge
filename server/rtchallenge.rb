@@ -21,6 +21,13 @@ get '/update_sprint' do
   redirect to('/')
 end
 
+get '/projects' do
+  protected!
+  headers = pivotal_headers
+  url = "#{pivotal_url}/projects"
+  RestClient.get(url, headers)
+end
+
 helpers do
 
   def protected!
