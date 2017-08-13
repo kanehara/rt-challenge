@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
-import Dashboard from '../containers/Dashboard'
-import _404 from '../containers/_404'
+import Dashboard from '../containers/dashboard/Dashboard'
+import {_404} from '../containers/error'
 
 export default (
     <div>
