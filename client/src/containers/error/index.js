@@ -1,5 +1,1 @@
-import { _404 } from './_404'
-
-export default {
-    _404
-}
+export { _404 } from './_404'
