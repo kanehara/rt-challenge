@@ -6,14 +6,25 @@ export const buildStoriesByStatus = stories => {
       built[story.current_state].push(story)
     }
     return built;
-  }, {unscheduled: [], planned: [], unstarted: [], started: [], delivered: [], accepted: [], finished: [], rejected: []});
+  }, {unscheduled: [], planned: [], unstarted: [], started: [], finished: [], delivered: [], accepted: [], rejected: []});
 }
+
+/**
+ * Concatenates all open tickets from the storiesByStatus map
+ */
+export const getOpenStories = ({unscheduled, planned, unstarted}) => [].concat(unstarted, planned, unscheduled)
+
+
 
 export default ({stories}) => {
   const storiesByStatus = buildStoriesByStatus(stories)
 
   return (
-    <div className="grid 8">
+    <div className="grid four">
+      <h4>Open</h4>
+      <h4>In Progress</h4>
+      <h4>Acceptance</h4>
+      <h4>Closed</h4>
       {stories.map(story => (
         <div key={story.id}>
           <h1>{story.name}</h1>
@@ -23,17 +34,14 @@ export default ({stories}) => {
           <h4>Type: {story.story_type}</h4>
         </div>
       ))}
-      <div className="unscheduled">
+      <div className="open">
+
       </div>
-      <div className="unstarted">
+      <div className="inProgress">
       </div>
-      <div className="started">
+      <div className="acceptance">
       </div>
-      <div className="delivered">
-      </div>
-      <div className="accepted">
-      </div>
-      <div className="finished">
+      <div className="closed">
       </div>
     </div>
   )}
