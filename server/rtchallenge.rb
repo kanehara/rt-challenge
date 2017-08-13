@@ -25,35 +25,35 @@ get '/update_sprint' do
   redirect to('/home')
 end
 
-get '/projects' do
+get '/api/v1/projects' do
   protected!
   headers = pivotal_headers
   url = "#{pivotal_url}/projects"
   RestClient.get(url, headers)
 end
 
-get '/projects/:id' do |id|
+get '/api/v1/projects/:id' do |id|
   protected!
   headers = pivotal_headers
   url = "#{pivotal_url}/projects/#{id}"
   RestClient.get(url, headers)
 end
 
-get '/projects/:id/labels' do |id|
+get '/api/v1/projects/:id/labels' do |id|
   protected!
   headers = pivotal_headers
   url = "#{pivotal_url}/projects/#{id}/labels"
   RestClient.get(url, headers)
 end
 
-get '/projects/:id/labels/:labelId' do |id, labelId|
+get '/api/v1/projects/:id/labels/:labelId' do |id, labelId|
   protected!
   headers = pivotal_headers
   url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
   RestClient.get(url, headers)
 end
 
-get '/projects/:id/labels/:labelId/stories' do |id, labelId|
+get '/api/v1/projects/:id/labels/:labelId/stories' do |id, labelId|
   protected!
   headers = pivotal_headers
   url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
@@ -62,7 +62,7 @@ get '/projects/:id/labels/:labelId/stories' do |id, labelId|
   RestClient.get(url, headers)
 end
 
-get '/projects/:id/stories' do |id|
+get '/api/v1/projects/:id/stories' do |id|
   protected!
   headers = pivotal_headers
   url = "#{pivotal_url}/projects/#{id}/stories"
