@@ -3,6 +3,13 @@ import {connect} from 'react-redux'
 import _ from 'lodash'
 
 import * as actions from '../../store/actions'
+import ProjectCard from '../../components/ProjectCard'
+
+const style = {
+    projects: {
+        margin: '50px'
+    }
+}
 
 const mapStateToProps = (state) => ({
     projects: state.projects.projects
@@ -17,14 +24,9 @@ export const Dashboard = ({ projects, getProjects }) => {
 
     return (
         <div>
-            <div>
+            <div className="grid three" style={style.projects}>
                 { projects.map(project => (
-                    <div key={project.id}>
-                        <h1>{project.name}</h1>
-                        <h3>{project.project_type}</h3>
-                        <h3>{project.iteration_length} week{project.iteration_length > 1 ? 's' : ''}/iteration</h3>
-                        <h3>Iteration: {project.current_iteration_number}</h3>
-                    </div>
+                    <ProjectCard key={project.id} project={project}/>
                 ))}
             </div>
         </div>
