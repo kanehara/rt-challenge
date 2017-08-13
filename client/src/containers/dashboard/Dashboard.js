@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import _ from 'lodash'
 
 import * as actions from '../../store/actions'
-import ProjectCard from '../../components/ProjectCard'
+import ProjectCard from '../../components/projectcard/ProjectCard'
 
 const style = {
     projects: {
