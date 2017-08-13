@@ -14,6 +14,11 @@ export const projects = (state = initialState, action) => {
                 projects: action.payload.projects,
                 status: 'success'
             };
+        case actionTypes.GET_PROJECTS_FAILURE:
+            return {
+                projects: [],
+                status: 'failure'
+            };
         default:
             return state;
     }
