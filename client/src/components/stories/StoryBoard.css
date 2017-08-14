@@ -1,0 +1,18 @@
+.storyBoard {
+    --smallFontSize: .75em;
+    font-size: var(--smallFontSize);
+}
+
+.storyBoard .ui.label {
+    font-size: var(--smallFontSize);
+}
+
+@media screen and (min-width: 768px) {
+    .storyBoard {
+        font-size: 1em;
+    }
+
+    .storyBoard .ui.label {
+        font-size: .85em;
+    }
+}

@@ -1,0 +1,10 @@
+.project.card {
+    border: solid 3px var(--secondaryBlue);
+    padding: 20px;
+    margin: 10px;
+}
+
+.project.card:hover {
+    cursor: pointer;
+    margin-top: 0px;
+}

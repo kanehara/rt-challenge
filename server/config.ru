@@ -1,2 +1,2 @@
 require './rtchallenge'
-run Sinatra::Application
+run App

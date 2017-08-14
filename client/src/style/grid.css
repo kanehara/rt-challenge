@@ -1,0 +1,39 @@
+.grid {
+    display: grid;
+    align-items: start;
+    grid-gap: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    .grid {
+        grid-gap: 15px;
+    }
+}
+
+.grid.one {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.grid.two {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid.three {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid.four {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid.five {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.grid.six {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.grid.seven {
+    grid-template-columns: repeat(7, 1fr);
+}

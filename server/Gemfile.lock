@@ -52,6 +52,7 @@ GEM
     sinatra-activerecord (2.0.13)
       activerecord (>= 3.2)
       sinatra (>= 1.0)
+    sinatra-cross_origin (0.4.0)
     slop (3.6.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -72,6 +73,7 @@ DEPENDENCIES
   rest-client (~> 1.6.9)!
   sinatra (~> 1.4.8)!
   sinatra-activerecord (~> 2.0.11)!
+  sinatra-cross_origin!
   testrail!
 
 BUNDLED WITH
