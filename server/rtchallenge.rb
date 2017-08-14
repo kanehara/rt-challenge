@@ -69,12 +69,16 @@ class App < Sinatra::Base
       label = make_call_parsed(url, headers)
       url = "#{pivotal_url}/projects/#{id}/search?query=label%3A#{label["name"]}+AND+includedone%3Atrue"
       res = make_call_parsed(url, headers)
-      json res["stories"]["stories"]
+      stories = res["stories"]["stories"]
+      populate_users(stories)
+      json stories
     else
       url = "#{pivotal_url}/projects/#{id}/iterations?scope=current"
       res = make_call_parsed(url, headers)
       if res
-        json res[0]["stories"]
+        stories = res[0]["stories"]
+        populate_users(stories)
+        json stories
       else
         404
       end
@@ -112,6 +116,16 @@ class App < Sinatra::Base
                         initials: ownerData["person"]["initials"],
                         name: ownerData["person"]["name"])
         end
+      end
+    end
+
+    def populate_users(stories)
+      stories.each do |story|
+        owners = []
+        story["owner_ids"].each do |id|
+          owners.push(Owner.find_by_poid(id))
+        end
+        story["owners"] = owners
       end
     end
 
