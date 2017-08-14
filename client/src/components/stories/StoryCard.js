@@ -34,10 +34,10 @@ export default withRouter(({history, story, match}) => {
                 <div>
                     {
                         story.owners.map(owner => (
-                            <a key={owner.poid} className="ui image label small">
+                            <div key={owner.poid} className="ui image label small dummyAvatar">
                                 <img src="/dummyAvatar.jpg" alt="dummy avatar"/>
                                 {owner.initials}
-                            </a>
+                            </div>
                         ))
                     }
                 </div>
