@@ -64,6 +64,7 @@ class App < Sinatra::Base
     protected!
     labelId = params[:label]
     headers = pivotal_headers
+    update_users(id)
     if labelId
       url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
       label = make_call_parsed(url, headers)
