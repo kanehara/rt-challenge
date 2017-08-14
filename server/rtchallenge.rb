@@ -10,7 +10,11 @@ require 'sinatra/activerecord'
 require './config/environments'
 require './models/owner'
 
-get '/' do
+get '/healthz' do
+  'Healthy as a horse!'
+end
+
+get '/home' do
   protected!
   erb :home
 end
@@ -18,7 +22,51 @@ end
 get '/update_sprint' do
   protected!
   update_current_iteration
-  redirect to('/')
+  redirect to('/home')
+end
+
+get '/projects' do
+  protected!
+  headers = pivotal_headers
+  url = "#{pivotal_url}/projects"
+  RestClient.get(url, headers)
+end
+
+get '/projects/:id' do |id|
+  protected!
+  headers = pivotal_headers
+  url = "#{pivotal_url}/projects/#{id}"
+  RestClient.get(url, headers)
+end
+
+get '/projects/:id/labels' do |id|
+  protected!
+  headers = pivotal_headers
+  url = "#{pivotal_url}/projects/#{id}/labels"
+  RestClient.get(url, headers)
+end
+
+get '/projects/:id/labels/:labelId' do |id, labelId|
+  protected!
+  headers = pivotal_headers
+  url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
+  RestClient.get(url, headers)
+end
+
+get '/projects/:id/labels/:labelId/stories' do |id, labelId|
+  protected!
+  headers = pivotal_headers
+  url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
+  label = make_call_parsed(url, headers)
+  url = "#{pivotal_url}/projects/#{id}/search?query=label%3A#{label["name"]}+AND+includedone%3Atrue"
+  RestClient.get(url, headers)
+end
+
+get '/projects/:id/stories' do |id|
+  protected!
+  headers = pivotal_headers
+  url = "#{pivotal_url}/projects/#{id}/stories"
+  RestClient.get(url, headers)
 end
 
 helpers do

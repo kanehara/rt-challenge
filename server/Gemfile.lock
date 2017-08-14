@@ -19,6 +19,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    byebug (9.0.6)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     dotenv (2.0.1)
@@ -35,6 +36,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     rack (1.6.8)
     rack-protection (1.5.3)
       rack
@@ -63,6 +67,7 @@ DEPENDENCIES
   mail (~> 2.6.4)!
   pg (~> 0.18.4)!
   pry (~> 0.10.4)!
+  pry-byebug!
   rb-readline!
   rest-client (~> 1.6.9)!
   sinatra (~> 1.4.8)!
