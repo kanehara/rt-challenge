@@ -32,6 +32,7 @@
 - Added React + React-Router + Redux + Redux-Observable Front End
 - Ability to view different projects
 - Ability to view different tags
+- CSS Grid
 
 ## Additional Info:
 
