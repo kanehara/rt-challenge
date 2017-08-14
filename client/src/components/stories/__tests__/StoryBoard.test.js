@@ -1,4 +1,4 @@
-import { buildStoriesByStatus, getOpenStories } from "../StoryBoard";
+import { buildStoriesByStatus, getOpenStories, getInProgressTickets } from "../StoryBoard";
 
 describe('tests buildStoriesByStatus', () => {
   it('returns a map of stories by status', () => {
@@ -41,7 +41,8 @@ describe('tests getOpenStories', () => {
     const testMap = {
       unscheduled: [1, 2, 3],
       planned: [4, 5, 6],
-      unstarted: [7, 8, 9]
+      unstarted: [7, 8, 9],
+      invalid: [10]
     }
     const result = getOpenStories(testMap)
     expect(result).toHaveLength(9)
@@ -54,5 +55,25 @@ describe('tests getOpenStories', () => {
     expect(result).toContain(7)
     expect(result).toContain(8)
     expect(result).toContain(9)
+    expect(result).not.toContain(10)
+  })
+})
+
+describe('tests getInProgressTickets', () => {
+  it('returns concatenated started and rejected stories from map', () => {
+    const testMap = {
+      started: [1, 2, 3],
+      rejected: [4, 5, 6],
+      invalid: [10]
+    }
+    const result = getInProgressTickets(testMap)
+    expect(result).toHaveLength(6);
+    expect(result).toContain(1);
+    expect(result).toContain(2);
+    expect(result).toContain(3);
+    expect(result).toContain(4);
+    expect(result).toContain(5);
+    expect(result).toContain(6);
+    expect(result).not.toContain(10);
   })
 })
