@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoryCard rendering renders story details 1`] = `
+<div
+  className="ui card"
+>
+  <div
+    className="content"
+  >
+    <div
+      className="header"
+    >
+      <a
+        href="test.com"
+        target="_blank"
+      >
+        test story
+      </a>
+    </div>
+  </div>
+  <div
+    className="content"
+  >
+    <div>
+      <div
+        className="ui image label small dummyAvatar"
+      >
+        <img
+          alt="dummy avatar"
+          src="/dummyAvatar.jpg"
+        />
+        yk
+      </div>
+    </div>
+    <h4>
+      <i
+        className="code icon"
+      />
+       
+      feature
+    </h4>
+    <h4>
+      Estimate: 
+      1
+    </h4>
+    <h4>
+      State: 
+      finished
+    </h4>
+    <div
+      className="ui label tiny"
+      onClick={[Function]}
+    >
+      test label
+    </div>
+  </div>
+</div>
+`;

@@ -4,7 +4,9 @@ import 'semantic-ui-icon/icon.min.css'
 import 'semantic-ui-card/card.min.css'
 import { withRouter } from 'react-router-dom'
 
-export default withRouter(({history, story, match}) => {
+
+
+export const StoryCard = ({history, story, match}) => {
     let storyTypeIcon = null
     switch(story.story_type) {
         case 'feature':
@@ -23,6 +25,24 @@ export default withRouter(({history, story, match}) => {
             console.error(`Invalid story type for story: ${story}`)
     }
 
+    const owners = story.owners.map(owner => (
+        <div key={owner.poid} className="ui image label small dummyAvatar">
+            <img src="/dummyAvatar.jpg" alt="dummy avatar"/>
+            {owner.initials}
+        </div>
+    ))
+
+    const storyType = story.story_type === 'feature'
+        ? (<h4>Estimate: {story.estimate ? story.estimate : 'Unestimated'}</h4>)
+        : null
+
+    const labels = story.labels.map(label => (
+        <div key={label.id} className="ui label tiny"
+             onClick={() => history.push(`/projects/${match.params.projectId}/stories/${label.id}`)}>
+            {label.name}
+        </div>
+    ))
+
     return (
         <div key={story.id} className="ui card">
             <div className="content">
@@ -31,29 +51,14 @@ export default withRouter(({history, story, match}) => {
                 </div>
             </div>
             <div className="content">
-                <div>
-                    {
-                        story.owners.map(owner => (
-                            <div key={owner.poid} className="ui image label small dummyAvatar">
-                                <img src="/dummyAvatar.jpg" alt="dummy avatar"/>
-                                {owner.initials}
-                            </div>
-                        ))
-                    }
-                </div>
+                <div>{owners}</div>
                 <h4>{storyTypeIcon} {story.story_type}</h4>
-                {
-                    story.story_type === 'feature' ? (
-                        <h4>Estimate: {story.estimate ? story.estimate : 'Unestimated'}</h4>) : ''
-                }
+                {storyType}
                 <h4>State: {story.current_state}</h4>
-                {story.labels.map(label => (
-                    <div key={label.id} className="ui label tiny"
-                         onClick={() => history.push(`/projects/${match.params.projectId}/stories/${label.id}`)}>
-                        {label.name}
-                    </div>
-                ))}
+                {labels}
             </div>
         </div>
     )
-})
+}
+
+export default withRouter(StoryCard)
