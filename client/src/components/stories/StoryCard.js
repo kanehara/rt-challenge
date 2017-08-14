@@ -27,7 +27,9 @@ export default withRouter(({history, story, match}) => {
     return (
         <div key={story.id} className="ui card">
             <div className="content">
-                <div className="header">{story.name}</div>
+                <div className="header">
+                    <a href={story.url} target="_blank">{story.name}</a>
+                </div>
             </div>
             <div className="content">
                 {storyTypeIcon} <strong>{story.story_type}</strong>
