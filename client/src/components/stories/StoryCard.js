@@ -8,10 +8,10 @@ export default withRouter(({history, story, match}) => {
     let storyTypeIcon = null
     switch(story.story_type) {
         case 'feature':
-            storyTypeIcon = (<i className="bug icon"/>)
+            storyTypeIcon = (<i className="code icon"/>)
             break;
         case 'bug':
-            storyTypeIcon = (<i className="code icon"/>)
+            storyTypeIcon = (<i className="bug icon"/>)
             break;
         case 'chore':
             storyTypeIcon = (<i className="cubes icon"/>)
