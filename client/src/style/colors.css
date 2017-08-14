@@ -2,3 +2,11 @@
   --primaryBlue: #3e7293;
   --secondaryBlue: #54a7d2;
 }
+
+.u--primaryBlueBackground {
+  background-color: var(--primaryBlue);
+}
+
+.u--secondaryBlueBackground {
+  background-color: var(--secondaryBlue);
+}

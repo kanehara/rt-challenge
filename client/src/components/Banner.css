@@ -1,0 +1,10 @@
+.banner {
+    text-align: center;
+    padding: 10px;
+}
+
+.banner a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}

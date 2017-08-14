@@ -8,8 +8,17 @@
     cursor: pointer;
 }
 
+.storyBoard .ui.card {
+    width: initial;
+}
+
 .storyBoard .ui.label:hover {
     background-color: #c3c3c3;
+}
+
+.ui.label.dummyAvatar:hover {
+    cursor: default;
+    background-color: #e8e8e8;
 }
 
 @media screen and (min-width: 768px) {
