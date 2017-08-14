@@ -13,6 +13,8 @@ export const buildStoriesByStatus = stories => {
 
 /**
  * Concatenates all open tickets from the storiesByStatus map
+ *
+ * TODO: add ability to show non current iteration
  */
 export const getOpenStories = ({unscheduled, planned, unstarted}) => [].concat(unstarted, planned, unscheduled)
 
@@ -30,17 +32,11 @@ export default ({stories}) => {
   const closedStories = storiesByStatus.accepted
 
   return (
-    <div className="grid five storyBoard">
-      <h2>Open</h2>
+    <div className="grid four storyBoard">
       <h2>In Progress</h2>
       <h2>Finished</h2>
       <h2>In Acceptance</h2>
       <h2>Closed</h2>
-      <div className="open">
-        {openStories.map(story => (
-            <StoryCard key={story.id} story={story} />
-        ))}
-      </div>
       <div className="inProgress">
         {inProgressStories.map(story => (
             <StoryCard key={story.id} story={story} />
