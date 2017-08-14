@@ -23,7 +23,6 @@ export default withRouter(({history, story, match}) => {
             console.error(`Invalid story type for story: ${story}`)
     }
 
-
     return (
         <div key={story.id} className="ui card">
             <div className="content">
@@ -32,14 +31,24 @@ export default withRouter(({history, story, match}) => {
                 </div>
             </div>
             <div className="content">
-                {storyTypeIcon} <strong>{story.story_type}</strong>
+                <div>
+                    {
+                        story.owners.map(owner => (
+                            <a key={owner.poid} className="ui image label small">
+                                <img src="/dummyAvatar.jpg" alt="dummy avatar"/>
+                                {owner.initials}
+                            </a>
+                        ))
+                    }
+                </div>
+                <h4>{storyTypeIcon} {story.story_type}</h4>
                 {
                     story.story_type === 'feature' ? (
                         <h4>Estimate: {story.estimate ? story.estimate : 'Unestimated'}</h4>) : ''
                 }
                 <h4>State: {story.current_state}</h4>
                 {story.labels.map(label => (
-                    <div key={label.id} className="ui label"
+                    <div key={label.id} className="ui label tiny"
                          onClick={() => history.push(`/projects/${match.params.projectId}/stories/${label.id}`)}>
                         {label.name}
                     </div>

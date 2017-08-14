@@ -25,7 +25,6 @@ export const getInProgressTickets = ({ started, rejected }) => [].concat(started
 
 export default ({stories}) => {
   const storiesByStatus = buildStoriesByStatus(stories)
-  const openStories = getOpenStories(storiesByStatus)
   const inProgressStories = getInProgressTickets(storiesByStatus)
   const finishedStories = storiesByStatus.finished
   const inAcceptanceStories = storiesByStatus.delivered
