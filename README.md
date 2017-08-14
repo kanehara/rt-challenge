@@ -38,9 +38,3 @@
 ### [Pivotal login](https://www.pivotaltracker.com/signin):
 - user: `nate+test1@reviewtrackers.com`
 - pw: `Password1!`
-
-### Nice to Have's
-Here are some nice to have's that were not implemented due to time constraint
-- Displaying multiple labels at once
-- Updating story labels
-- User login with JWT
