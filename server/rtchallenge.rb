@@ -56,8 +56,13 @@ class App < Sinatra::Base
   get '/api/v1/projects/:id/stories' do |id|
     protected!
     headers = pivotal_headers
-    url = "#{pivotal_url}/projects/#{id}/stories"
-    RestClient.get(url, headers)
+    url = "#{pivotal_url}/projects/#{id}/iterations?scope=current"
+    res = make_call_parsed(url, headers)
+    if res
+      json res[0]["stories"]
+    else
+      404
+    end
   end
 
   get '/api/v1/projects/:id/stories/:labelId' do |id, labelId|
