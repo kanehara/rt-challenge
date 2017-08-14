@@ -53,26 +53,32 @@ class App < Sinatra::Base
     RestClient.get(url, headers)
   end
 
-  get '/api/v1/projects/:id/stories' do |id|
-    protected!
-    headers = pivotal_headers
-    url = "#{pivotal_url}/projects/#{id}/iterations?scope=current"
-    res = make_call_parsed(url, headers)
-    if res
-      json res[0]["stories"]
-    else
-      404
-    end
-  end
-
-  get '/api/v1/projects/:id/stories/:labelId' do |id, labelId|
+  get '/api/v1/projects/:id/labels/:labelId' do |id, labelId|
     protected!
     headers = pivotal_headers
     url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
-    label = make_call_parsed(url, headers)
-    url = "#{pivotal_url}/projects/#{id}/search?query=label%3A#{label["name"]}+AND+includedone%3Atrue"
-    res = make_call_parsed(url, headers)
-    json res["stories"]["stories"]
+    RestClient.get(url, headers)
+  end
+
+  get '/api/v1/projects/:id/stories' do |id|
+    protected!
+    labelId = params[:label]
+    headers = pivotal_headers
+    if labelId
+      url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
+      label = make_call_parsed(url, headers)
+      url = "#{pivotal_url}/projects/#{id}/search?query=label%3A#{label["name"]}+AND+includedone%3Atrue"
+      res = make_call_parsed(url, headers)
+      json res["stories"]["stories"]
+    else
+      url = "#{pivotal_url}/projects/#{id}/iterations?scope=current"
+      res = make_call_parsed(url, headers)
+      if res
+        json res[0]["stories"]
+      else
+        404
+      end
+    end
   end
 
   get '/api/v1/owners/:id' do |id|
