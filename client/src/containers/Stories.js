@@ -43,7 +43,7 @@ export class Stories extends React.Component {
         case 'success':
             return (
                 <div>
-                    <h4>Showing: {this.props.label}</h4>
+                    <h4>Showing: {this.props.label ? this.props.label : 'Current Iteration' }</h4>
                     <StoryBoard stories={this.props.stories} />
                 </div>
             )

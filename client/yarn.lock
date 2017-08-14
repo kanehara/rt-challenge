@@ -5646,6 +5646,10 @@ selfsigned@^1.9.1:
   dependencies:
     node-forge "0.6.33"
 
+semantic-ui-icon@^2.2.12:
+  version "2.2.12"
+  resolved "https://registry.yarnpkg.com/semantic-ui-icon/-/semantic-ui-icon-2.2.12.tgz#47e640e0f10ed4308f548aef0e0373786c56aa2c"
+
 semantic-ui-label@^2.2.12:
   version "2.2.12"
   resolved "https://registry.yarnpkg.com/semantic-ui-label/-/semantic-ui-label-2.2.12.tgz#e7bb6ca8ec59d057e3b936c75c70f2e08105f997"
