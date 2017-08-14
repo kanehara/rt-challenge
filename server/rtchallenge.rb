@@ -53,27 +53,21 @@ class App < Sinatra::Base
     RestClient.get(url, headers)
   end
 
-  get '/api/v1/projects/:id/labels/:labelId' do |id, labelId|
-    protected!
-    headers = pivotal_headers
-    url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
-    RestClient.get(url, headers)
-  end
-
-  get '/api/v1/projects/:id/labels/:labelId/stories' do |id, labelId|
-    protected!
-    headers = pivotal_headers
-    url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
-    label = make_call_parsed(url, headers)
-    url = "#{pivotal_url}/projects/#{id}/search?query=label%3A#{label["name"]}+AND+includedone%3Atrue"
-    RestClient.get(url, headers)
-  end
-
   get '/api/v1/projects/:id/stories' do |id|
     protected!
     headers = pivotal_headers
     url = "#{pivotal_url}/projects/#{id}/stories"
     RestClient.get(url, headers)
+  end
+
+  get '/api/v1/projects/:id/stories/:labelId' do |id, labelId|
+    protected!
+    headers = pivotal_headers
+    url = "#{pivotal_url}/projects/#{id}/labels/#{labelId}"
+    label = make_call_parsed(url, headers)
+    url = "#{pivotal_url}/projects/#{id}/search?query=label%3A#{label["name"]}+AND+includedone%3Atrue"
+    res = make_call_parsed(url, headers)
+    json res["stories"]["stories"]
   end
 
   get '/api/v1/owners/:id' do |id|

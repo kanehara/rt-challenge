@@ -1,6 +1,7 @@
 import React from 'react'
-import * as actions from '../store/actions'
 import {connect} from 'react-redux'
+
+import * as actions from '../store/actions'
 import StoryBoard from '../components/stories/StoryBoard'
 
 const mapStateToProps = (state) => ({
@@ -15,6 +16,12 @@ export class Stories extends React.Component {
 
   componentWillMount() {
     this.props.getStories(this.props.match.params)
+  }
+
+  componentWillUpdate(nextProps) {
+    if (this.props.match.params.labelId !== nextProps.match.params.labelId) {
+      this.props.getStories(nextProps.match.params)
+    }
   }
 
   render() {

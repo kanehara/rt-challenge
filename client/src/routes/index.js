@@ -10,8 +10,8 @@ export default (
             <Route path="/dashboard" component={Dashboard}/>
             <Redirect exact from="/" to="/dashboard"/>
             <Redirect exact from="/projects" to="/dashboard"/>
+            <Route path="/projects/:projectId/stories/:labelId" component={Stories}/>
             <Route path="/projects/:projectId/stories" component={Stories}/>
-            <Redirect from="/projects/:projectId" to="/projects/:projectId/stories"/>
             <Route component={_404}/>
         </Switch>
     </div>
