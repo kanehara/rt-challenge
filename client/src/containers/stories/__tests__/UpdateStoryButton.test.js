@@ -98,8 +98,7 @@ describe('tests getLabelAndHandlers method', () => {
 
     const mockArg = {
       story: {
-        current_state: 'delivered',
-        story_type: 'feature'
+        current_state: 'delivered'
       },
       updateStory: payload => {
         expect(payload.requestBody.current_state).toEqual(expectedNextState)
@@ -111,5 +110,19 @@ describe('tests getLabelAndHandlers method', () => {
     result[0].handler()
     expectedNextState = 'rejected'
     result[1].handler()
+  })
+
+  it('should have single handler to update state to unstarted if current state is accepted', () => {
+    const mockArg = {
+      story: {
+        current_state: 'accepted'
+      },
+      updateStory: payload => {
+        expect(payload.requestBody.current_state).toEqual('unstarted')
+      }
+    }
+
+    const result = getLabelAndHandlers(mockArg)
+    result[0].handler()
   })
 })

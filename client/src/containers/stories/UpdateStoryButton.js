@@ -68,6 +68,14 @@ export const getLabelAndHandlers = ({story, updateStory, projectId }) => {
           requestBody: { current_state: 'rejected' }
         })
       }]
+    case 'accepted':
+      return [{
+        label: 'Reopen',
+        handler: () => updateStory({
+          ...payload,
+          requestBody: { current_state: 'unstarted' }
+        })
+      }]
     default:
       return []
   }
