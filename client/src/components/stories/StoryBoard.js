@@ -30,12 +30,16 @@ export default ({stories}) => {
   const inAcceptanceStories = storiesByStatus.delivered
   const closedStories = storiesByStatus.accepted
 
+  const textAlignCenter = {
+    textAlign: 'center'
+  }
+
   return (
     <div className="grid four storyBoard">
-      <h2>In Progress</h2>
-      <h2>Finished</h2>
-      <h2>In Acceptance</h2>
-      <h2>Closed</h2>
+      <h2 style={textAlignCenter}>In Progress</h2>
+      <h2 style={textAlignCenter}>Finished</h2>
+      <h2 style={textAlignCenter}>In Acceptance</h2>
+      <h2 style={textAlignCenter}>Closed</h2>
       <div className="inProgress">
         {inProgressStories.map(story => (
             <StoryCard key={story.id} story={story} />
