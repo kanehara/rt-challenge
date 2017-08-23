@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch, Redirect } from 'react-router'
 import Dashboard from '../containers/Dashboard'
 import {_404} from '../containers/error'
-import Stories from '../containers/Stories'
+import Stories from '../containers/stories/Stories'
 import Banner from '../components/Banner';
 
 export default (

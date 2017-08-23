@@ -3,7 +3,7 @@ import {shallow} from 'enzyme'
 import renderer from 'react-test-renderer'
 import {Router} from 'react-router'
 
-import {StoryCard} from '../StoryCard'
+import {StoryCard} from '../../../containers/stories/StoryCard'
 
 describe('StoryCard rendering', () => {
     it('renders story details', () => {

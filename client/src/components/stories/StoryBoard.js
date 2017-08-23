@@ -1,6 +1,6 @@
 import React from 'react'
 import './StoryBoard.css'
-import StoryCard from './StoryCard'
+import StoryCard from '../../containers/stories/StoryCard'
 
 export const buildStoriesByStatus = stories => {
   return stories.reduce((built, story) => {
