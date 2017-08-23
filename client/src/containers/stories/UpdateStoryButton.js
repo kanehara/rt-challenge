@@ -41,7 +41,9 @@ export const getLabelAndHandlers = ({story, updateStory, projectId }) => {
         label: 'Finish',
         handler: () => updateStory({
           ...payload,
-          requestBody: { current_state: 'finished' }
+          requestBody: story.story_type === 'chore'
+            ? { current_state: 'accepted' }
+            : { current_state: 'finished' }
         })
       }]
     case 'finished':
