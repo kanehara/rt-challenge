@@ -1,7 +1,11 @@
-.ui.label {
-    font-size: var(--smallFontSize);
+.ui.label.tiny {
+    font-size: .45em;
     cursor: pointer;
     margin: 0.18em;
+}
+
+.ui.button {
+    font-size: var(--smallFontSize);
 }
 
 .ui.card {
@@ -17,8 +21,25 @@
     background-color: #e8e8e8;
 }
 
+.ui.label.dummyAvatar {
+    font-size: var(--smallFontSize);
+    margin: .18em;
+}
+
+a {
+    color: var(--secondaryColor);
+}
+
 @media screen and (min-width: 768px) {
-    .ui.label {
+    .ui.button {
+        font-size: .85em;
+    }
+
+    .ui.label.tiny {
+        font-size: .55em;
+    }
+
+    .ui.label.dummyAvatar {
         font-size: .85em;
     }
 }

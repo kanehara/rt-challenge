@@ -1,5 +1,5 @@
 .project.card {
-    border: solid 3px var(--secondaryBlue);
+    border: solid 3px var(--secondaryColor);
     padding: 20px;
     margin: 10px;
 }

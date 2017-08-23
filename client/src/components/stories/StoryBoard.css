@@ -3,6 +3,13 @@
     font-size: var(--smallFontSize);
 }
 
+.storyBoard .column {
+    padding: 5px;
+    border-radius: 5px;
+    background: var(--secondaryColor);
+    height: 100%;
+}
+
 @media screen and (min-width: 768px) {
     .storyBoard {
         font-size: 1em;
@@ -10,5 +17,9 @@
 
     .storyBoard .ui.label {
         font-size: .85em;
+    }
+
+    .storyBoard .column {
+        padding: 10px;
     }
 }

@@ -1,12 +1,12 @@
 :root {
-  --primaryBlue: #3e7293;
-  --secondaryBlue: #54a7d2;
+  --primaryColor: #124b78;
+  --secondaryColor: #3e7293;
 }
 
 .u--primaryBlueBackground {
-  background-color: var(--primaryBlue);
+  background-color: var(--primaryColor);
 }
 
 .u--secondaryBlueBackground {
-  background-color: var(--secondaryBlue);
+  background-color: var(--secondaryColor);
 }

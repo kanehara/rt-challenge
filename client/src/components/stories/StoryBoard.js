@@ -40,22 +40,22 @@ export default ({stories}) => {
       <h2 style={textAlignCenter}>Finished</h2>
       <h2 style={textAlignCenter}>In Acceptance</h2>
       <h2 style={textAlignCenter}>Closed</h2>
-      <div className="inProgress">
+      <div className="inProgress column">
         {inProgressStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}
       </div>
-      <div className="finished">
+      <div className="finished column">
         {finishedStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}
       </div>
-      <div className="inAcceptance">
+      <div className="inAcceptance column">
         {inAcceptanceStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}
       </div>
-      <div className="closed">
+      <div className="closed column">
         {closedStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}
