@@ -1,0 +1,47 @@
+.ui.label.tiny {
+    font-size: .45em;
+    cursor: pointer;
+    margin: 0.18em;
+}
+
+.ui.button {
+    font-size: var(--smallFontSize);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ui.card {
+    width: initial;
+}
+
+.ui.label:hover {
+    background-color: #c3c3c3;
+}
+
+.ui.label.dummyAvatar:hover {
+    cursor: default;
+    background-color: #e8e8e8;
+}
+
+.ui.label.dummyAvatar {
+    font-size: var(--smallFontSize);
+    margin: .18em;
+}
+
+a {
+    color: var(--secondaryColor);
+}
+
+@media screen and (min-width: 768px) {
+    .ui.button {
+        font-size: .85em;
+    }
+
+    .ui.label.tiny {
+        font-size: .55em;
+    }
+
+    .ui.label.dummyAvatar {
+        font-size: .85em;
+    }
+}

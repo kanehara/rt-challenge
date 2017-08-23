@@ -1,6 +1,6 @@
 import React from 'react'
 import './StoryBoard.css'
-import StoryCard from './StoryCard'
+import StoryCard from '../../containers/stories/StoryCard'
 
 export const buildStoriesByStatus = stories => {
   return stories.reduce((built, story) => {
@@ -30,28 +30,32 @@ export default ({stories}) => {
   const inAcceptanceStories = storiesByStatus.delivered
   const closedStories = storiesByStatus.accepted
 
+  const textAlignCenter = {
+    textAlign: 'center'
+  }
+
   return (
     <div className="grid four storyBoard">
-      <h2>In Progress</h2>
-      <h2>Finished</h2>
-      <h2>In Acceptance</h2>
-      <h2>Closed</h2>
-      <div className="inProgress">
+      <h2 style={textAlignCenter}>In Progress</h2>
+      <h2 style={textAlignCenter}>Finished</h2>
+      <h2 style={textAlignCenter}>In Acceptance</h2>
+      <h2 style={textAlignCenter}>Closed</h2>
+      <div className="inProgress column">
         {inProgressStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}
       </div>
-      <div className="finished">
+      <div className="finished column">
         {finishedStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}
       </div>
-      <div className="inAcceptance">
+      <div className="inAcceptance column">
         {inAcceptanceStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}
       </div>
-      <div className="closed">
+      <div className="closed column">
         {closedStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}

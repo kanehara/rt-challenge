@@ -2,8 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import _ from 'lodash'
 
-import * as actions from '../store/actions'
-import StoryBoard from '../components/stories/StoryBoard'
+import * as actions from '../../store/actions'
+import StoryBoard from '../../components/stories/StoryBoard'
 
 const mapStateToProps = (state) => ({
   status: state.stories.status,
