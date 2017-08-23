@@ -36,11 +36,19 @@ export class Stories extends React.Component {
     const currentProject = _.head(this.props.projects.projects
         .filter(p => String(p.id) === this.props.match.params.projectId))
 
+    const boardDescription = (
+      <div>
+        <h2>{currentProject ? currentProject.name : ''}</h2>
+        <h4>Showing: {this.props.label ? this.props.label : 'Current Iteration' }</h4>
+      </div>
+    )
+
     switch(this.props.status) {
         case 'loading':
             return (
                 <div>
-                    <h3>Loading...</h3>
+                  {boardDescription}
+                  <h3>Loading...</h3>
                 </div>
             )
         case 'failure':
@@ -52,9 +60,8 @@ export class Stories extends React.Component {
         case 'success':
             return (
                 <div>
-                    <h2>{currentProject ? currentProject.name : ''}</h2>
-                    <h4>Showing: {this.props.label ? this.props.label : 'Current Iteration' }</h4>
-                    <StoryBoard stories={this.props.stories} />
+                  {boardDescription}
+                  <StoryBoard stories={this.props.stories} />
                 </div>
             )
         default:

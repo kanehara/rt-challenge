@@ -1,4 +1,4 @@
-import { buildStoriesByStatus, getOpenStories, getInProgressTickets } from "../StoryBoard";
+import { buildStoriesByStatus, getOpenStories, getOpenTickets } from "../StoryBoard";
 
 describe('tests buildStoriesByStatus', () => {
   it('returns a map of stories by status', () => {
@@ -59,21 +59,23 @@ describe('tests getOpenStories', () => {
   })
 })
 
-describe('tests getInProgressTickets', () => {
+describe('tests getOpenTickets', () => {
   it('returns concatenated started and rejected stories from map', () => {
     const testMap = {
       started: [1, 2, 3],
       rejected: [4, 5, 6],
-      invalid: [10]
+      invalid: [10],
+      unstarted: [11]
     }
-    const result = getInProgressTickets(testMap)
-    expect(result).toHaveLength(6);
+    const result = getOpenTickets(testMap)
+    expect(result).toHaveLength(7);
     expect(result).toContain(1);
     expect(result).toContain(2);
     expect(result).toContain(3);
     expect(result).toContain(4);
     expect(result).toContain(5);
     expect(result).toContain(6);
+    expect(result).toContain(11);
     expect(result).not.toContain(10);
   })
 })
