@@ -86,6 +86,13 @@ class App < Sinatra::Base
     end
   end
 
+  put '/api/v1/projects/:projectId/stories/:storyId' do |projectId, storyId|
+    protected!
+    url = "#{pivotal_url}/projects/#{projectId}/stories/#{storyId}"
+    headers = pivotal_headers
+    RestClient.put(url, JSON.parse(request.body.read), headers)
+  end
+
   get '/api/v1/owners/:id' do |id|
     protected!
     owner = Owner.find_by_poid(id)
