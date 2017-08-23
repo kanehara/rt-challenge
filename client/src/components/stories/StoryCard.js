@@ -2,9 +2,9 @@ import React from 'react'
 import 'semantic-ui-label/label.min.css'
 import 'semantic-ui-icon/icon.min.css'
 import 'semantic-ui-card/card.min.css'
+import 'semantic-ui-button/button.min.css'
+import './StoryCard.css'
 import { withRouter } from 'react-router-dom'
-
-
 
 export const StoryCard = ({history, story, match}) => {
     let storyTypeIcon = null
@@ -48,6 +48,9 @@ export const StoryCard = ({history, story, match}) => {
             <div className="content">
                 <div className="header">
                     <a href={story.url} target="_blank">{story.name}</a>
+                    <div>
+                        {labels}
+                    </div>
                 </div>
             </div>
             <div className="content">
@@ -55,7 +58,7 @@ export const StoryCard = ({history, story, match}) => {
                 <h4>{storyTypeIcon} {story.story_type}</h4>
                 {storyType}
                 <h4>State: {story.current_state}</h4>
-                {labels}
+                <div className="ui button">Action</div>
             </div>
         </div>
     )
