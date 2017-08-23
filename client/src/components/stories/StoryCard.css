@@ -6,6 +6,8 @@
 
 .ui.button {
     font-size: var(--smallFontSize);
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .ui.card {
