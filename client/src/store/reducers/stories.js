@@ -22,6 +22,29 @@ export const stories = (state = initialState, action) => {
         status: 'failure',
         label: null
       };
+    case actionTypes.UPDATE_STORY:
+      return {
+        stories: state.stories,
+        status: 'loading',
+        label: null
+      };
+    case actionTypes.UPDATE_STORY_SUCCESS:
+      const updatedStories = state.stories
+        .map(story => story.id === action.payload.updatedStory.id
+            ? action.payload.updatedStory
+            : story
+        )
+      return {
+        stories: updatedStories,
+        status: 'success',
+        label: null
+      }
+    case actionTypes.UPDATE_STORY_FAILURE:
+      return {
+        stories: [],
+        status: 'failure',
+        label: null
+      }
     default:
       return state;
   }

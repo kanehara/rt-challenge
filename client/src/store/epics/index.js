@@ -1,7 +1,8 @@
 import {getAllProjects} from "./projects";
-import {getAllStories} from './stories'
+import {getAllStories, updateStory} from './stories'
 
 export default [
-    getAllProjects,
-    getAllStories
+  getAllProjects,
+  getAllStories,
+  updateStory
 ]

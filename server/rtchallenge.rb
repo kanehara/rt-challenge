@@ -22,8 +22,9 @@ class App < Sinatra::Base
   end
 
   options '*' do
-    response.headers["Allow"] = "GET, POST, OPTIONS"
+    response.headers["Allow"] = "GET, POST, OPTIONS, PUT"
     response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Methods"] = "PUT"
     response.headers["Access-Control-Allow-Origin"] = "*"
     200
   end
@@ -71,14 +72,14 @@ class App < Sinatra::Base
       url = "#{pivotal_url}/projects/#{id}/search?query=label%3A#{label["name"]}+AND+includedone%3Atrue"
       res = make_call_parsed(url, headers)
       stories = res["stories"]["stories"]
-      populate_users(stories)
+      populate_owners(stories)
       json stories
     else
       url = "#{pivotal_url}/projects/#{id}/iterations?scope=current"
       res = make_call_parsed(url, headers)
       if res
         stories = res[0]["stories"]
-        populate_users(stories)
+        populate_owners(stories)
         json stories
       else
         404
@@ -90,7 +91,9 @@ class App < Sinatra::Base
     protected!
     url = "#{pivotal_url}/projects/#{projectId}/stories/#{storyId}"
     headers = pivotal_headers
-    RestClient.put(url, JSON.parse(request.body.read), headers)
+    updatedStory = JSON.parse(RestClient.put(url, JSON.parse(request.body.read), headers))
+    populate_owners([updatedStory])
+    json updatedStory
   end
 
   get '/api/v1/owners/:id' do |id|
@@ -127,7 +130,7 @@ class App < Sinatra::Base
       end
     end
 
-    def populate_users(stories)
+    def populate_owners(stories)
       stories.each do |story|
         owners = []
         story["owner_ids"].each do |id|

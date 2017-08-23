@@ -8,6 +8,11 @@
     font-size: var(--smallFontSize);
     box-sizing: border-box;
     width: 100%;
+    margin-bottom: .5em;
+}
+
+.ui.button:last-child {
+    margin-bottom: 0;
 }
 
 .ui.card {

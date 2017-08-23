@@ -34,6 +34,13 @@
 - Ability to view different tags
 - CSS Grid
 
+## Upgrade Notes
+- Ability to update story state
+- Styling updates
+- Rearranged card layout
+- Added unstarted tickets to board
+- Renamed 'In Progress' column to 'Open'
+
 ## Additional Info:
 
 ### [Pivotal login](https://www.pivotaltracker.com/signin):

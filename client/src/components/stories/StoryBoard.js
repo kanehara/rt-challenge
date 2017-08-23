@@ -21,11 +21,11 @@ export const getOpenStories = ({unscheduled, planned, unstarted}) => [].concat(u
 /**
  * Concatenates all in progress tickets from the storiesByStatusMap
  */
-export const getInProgressTickets = ({ started, rejected }) => [].concat(started, rejected)
+export const getOpenTickets = ({ started, rejected, unstarted }) => [].concat(unstarted, started, rejected)
 
 export default ({stories}) => {
   const storiesByStatus = buildStoriesByStatus(stories)
-  const inProgressStories = getInProgressTickets(storiesByStatus)
+  const openStories = getOpenTickets(storiesByStatus)
   const finishedStories = storiesByStatus.finished
   const inAcceptanceStories = storiesByStatus.delivered
   const closedStories = storiesByStatus.accepted
@@ -36,12 +36,12 @@ export default ({stories}) => {
 
   return (
     <div className="grid four storyBoard">
-      <h2 style={textAlignCenter}>In Progress</h2>
+      <h2 style={textAlignCenter}>Open</h2>
       <h2 style={textAlignCenter}>Finished</h2>
       <h2 style={textAlignCenter}>In Acceptance</h2>
       <h2 style={textAlignCenter}>Closed</h2>
       <div className="inProgress column">
-        {inProgressStories.map(story => (
+        {openStories.map(story => (
             <StoryCard key={story.id} story={story} />
         ))}
       </div>
