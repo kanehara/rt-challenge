@@ -1,0 +1,24 @@
+.ui.label {
+    font-size: var(--smallFontSize);
+    cursor: pointer;
+    margin: 0.18em;
+}
+
+.ui.card {
+    width: initial;
+}
+
+.ui.label:hover {
+    background-color: #c3c3c3;
+}
+
+.ui.label.dummyAvatar:hover {
+    cursor: default;
+    background-color: #e8e8e8;
+}
+
+@media screen and (min-width: 768px) {
+    .ui.label {
+        font-size: .85em;
+    }
+}
